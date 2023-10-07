@@ -51,10 +51,6 @@ public class Application {
 
     }
 
-
-
-
-
     private void AddRecipient(Academic_personel recipient) {
 
         try {

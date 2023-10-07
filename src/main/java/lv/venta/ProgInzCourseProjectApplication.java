@@ -34,7 +34,7 @@ public class ProgInzCourseProjectApplication {
 		SpringApplication.run(ProgInzCourseProjectApplication.class, args);
 	}
 	
-	@Bean //Calls function when system runs
+	//@Bean //Calls function when system runs
 	public CommandLineRunner testModel(
 			IRepoCourse courseRep,
 			IRepoThesis thesisRep,
