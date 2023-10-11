@@ -56,14 +56,6 @@ public class Course {
 	@ManyToMany(mappedBy = "debtCourses")
 	private Collection<Student> studentsWithDebt = new ArrayList<>();
 
-//	public Course(
-//			@Size(min = 5, max = 25) String title, 
-//			@Min(1) @Max(4) int creditPoints) {
-//
-//		this.title = title;
-//		this.creditPoints = creditPoints;
-//	}
-	
 	public Course(
 		String title,
 		int creditPoints) {

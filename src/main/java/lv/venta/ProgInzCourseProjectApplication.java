@@ -34,7 +34,7 @@ public class ProgInzCourseProjectApplication {
 		SpringApplication.run(ProgInzCourseProjectApplication.class, args);
 	}
 	
-	//@Bean //Calls function when system runs
+	@Bean //Calls function when system runs
 	public CommandLineRunner testModel(
 			IRepoCourse courseRep,
 			IRepoThesis thesisRep,
@@ -52,25 +52,28 @@ public class ProgInzCourseProjectApplication {
 			public void run(String... args) throws Exception {
 
 				Collection<Academic_personel> recipients = new ArrayList<>();
-
-
-
+//
+//
+//
 				Student student1 = new Student("Janis", "Ozolins", "020232-22444", null ,"123REDs");
 				Academic_personel personel1 = new Academic_personel("Karina", "Skirmante", "111101-11223", null, Degree.master);
-
-
+//
+//
 				studentRep.save(student1);
 				academicPersonelRep.save(personel1);
-
-
-
+//
+//
+//
 				recipients.add(personel1);
+//
+//
+//				Application app1 = new Application("Iesniegums", "Sveiki, mans iesniegums ir loti radoss, es velejos uzzinat par iespejam...",student1 ,recipients);
+//
+//				applicationRep.save(app1);
 
+				Application app2 = new Application("Atteikums", "Sveiki, velos atteikties no Bezmaksas kabatu kontroles",student1 ,recipients);
 
-				Application app1 = new Application("Iesniegums", "Sveiki, mans iesniegums ir loti radoss, es velejos uzzinat par iespejam...",student1 ,recipients);
-
-				applicationRep.save(app1);
-
+				applicationRep.save(app2);
 
 			}
 		};

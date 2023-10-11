@@ -3,6 +3,8 @@ package lv.venta.models.users;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -34,7 +36,8 @@ public class Academic_personel extends Person{
 	private Collection<Thesis> ThesisForReview = new ArrayList<>();
 
 	@ManyToMany(mappedBy = "recipients")
-	private Collection<Application> applications;
+	@JsonBackReference
+	private Collection<Application> applications = new ArrayList<>();
 
 	@OneToMany(mappedBy = "personel")
 	private Collection<Comments> comments;

@@ -3,6 +3,8 @@ package lv.venta.models.users;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -52,6 +54,7 @@ public class Student extends Person{
 	private Collection<Thesis> thesis;
 
 	@OneToMany(mappedBy = "author")
+	@JsonBackReference
 	private Collection<Application> applications;
 
 

@@ -1,5 +1,6 @@
 package lv.venta.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -8,6 +9,7 @@ import lombok.Setter;
 import lv.venta.models.users.Academic_personel;
 import lv.venta.models.users.Student;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Getter
@@ -33,13 +35,15 @@ public class Application {
 
     @ManyToOne
     @JoinColumn(name = "studentId")
+    @JsonManagedReference
     private Student author;
 
     @ManyToMany
     @JoinTable(name = "Application_recipients",
-    joinColumns = @JoinColumn(name = "applicationId"),
+    joinColumns = @JoinColumn(name = "ApplId"),
     inverseJoinColumns = @JoinColumn(name = "id_personel"))
-    private Collection<Academic_personel> recipients;
+    @JsonManagedReference
+    private Collection<Academic_personel> recipients = new ArrayList<>();
 
     public Application(String title, String text, Student author, Collection<Academic_personel> recipients) {
 

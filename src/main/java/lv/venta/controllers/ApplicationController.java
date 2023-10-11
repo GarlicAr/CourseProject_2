@@ -1,6 +1,7 @@
 package lv.venta.controllers;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lv.venta.models.Application;
 import lv.venta.repos.IRepoApplication;
 import lv.venta.services.IApplicationCRUDService;
@@ -20,14 +21,27 @@ public class ApplicationController {
     @Autowired
     ApplicationCRUDService appService;
 
+    private final ObjectMapper objectMapper = new ObjectMapper();
+
     @GetMapping("/all")
     public String retrieveAllApplications(Model model) {
 
-        Collection<Application> allApps = appService.getAll();
+        Collection<Application> applications = appService.getAll();
 
-        model.addAttribute("AllApplications", allApps);
+        try {
 
-        return "show-all-applications";
+            String json = objectMapper.writeValueAsString(applications);
+
+            System.out.println(json);
+
+            return json;
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+            return "Error";
+        }
 
 
     }
