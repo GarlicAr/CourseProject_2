@@ -38,67 +38,67 @@ public class Application {
     @JsonManagedReference
     private Student author;
 
-    @ManyToMany
-    @JoinTable(name = "Application_recipients",
-    joinColumns = @JoinColumn(name = "ApplId"),
-    inverseJoinColumns = @JoinColumn(name = "id_personel"))
-    @JsonManagedReference
-    private Collection<Academic_personel> recipients = new ArrayList<>();
+//    @ManyToMany(cascade = CascadeType.PERSIST)
+//    @JoinTable(name = "Application_recipients",
+//    joinColumns = @JoinColumn(name = "ApplId"),
+//    inverseJoinColumns = @JoinColumn(name = "id_personel"))
+//    @JsonManagedReference
+//    private Collection<Academic_personel> recipients = new ArrayList<>();
 
     public Application(String title, String text, Student author, Collection<Academic_personel> recipients) {
 
         setTitle(title);
         setText(text);
         setAuthor(author);
-        setRecipients(recipients);
+//        setRecipients(recipients);
 
 
     }
 
-    private void AddRecipient(Academic_personel recipient) {
-
-        try {
-
-            if (recipient != null) {
-
-                if (!recipients.contains(recipient)){
-
-                    recipients.add(recipient);
-
-                }
-
-            }
-
-        }catch (Exception e) {
-
-            e.printStackTrace();
-
-        }
-
-    }
-
-    private void RemoveRecipient(Academic_personel recipient) {
-
-        try {
-
-            if (recipient != null) {
-
-                if(recipients.contains(recipient)) {
-
-                    recipients.remove(recipient);
-
-                }
-
-
-
-            }
-
-        }catch (Exception e) {
-
-            e.printStackTrace();
-
-        }
-
-    }
+//    private void AddRecipient(Academic_personel recipient) {
+//
+//        try {
+//
+//            if (recipient != null) {
+//
+//                if (!recipients.contains(recipient)){
+//
+//                    recipients.add(recipient);
+//
+//                }
+//
+//            }
+//
+//        }catch (Exception e) {
+//
+//            e.printStackTrace();
+//
+//        }
+//
+//    }
+//
+//    private void RemoveRecipient(Academic_personel recipient) {
+//
+//        try {
+//
+//            if (recipient != null) {
+//
+//                if(recipients.contains(recipient)) {
+//
+//                    recipients.remove(recipient);
+//
+//                }
+//
+//
+//
+//            }
+//
+//        }catch (Exception e) {
+//
+//            e.printStackTrace();
+//
+//        }
+//
+//    }
 
 }

@@ -2,6 +2,7 @@ package lv.venta.controllers;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lv.venta.dto.ApplicationDTO;
 import lv.venta.models.Application;
 import lv.venta.repos.IRepoApplication;
 import lv.venta.services.IApplicationCRUDService;
@@ -30,8 +31,6 @@ public class ApplicationController {
 
             String json = objectMapper.writeValueAsString(applications);
 
-            System.out.println(json);
-
             return json;
 
         } catch (Exception e) {
@@ -44,16 +43,42 @@ public class ApplicationController {
 
     }
 
-    @PostMapping("/delete/{appId}")
+    @DeleteMapping("/delete/{appId}")
     public void deleteApplication(@PathVariable("appId") Long appId) {
 
         try {
+
+            System.out.println(appId);
 
             if(appId > 0) {
 
                 appService.deleteApplication(appId);
 
-                System.out.printf("Application: " + appId + " has been deleted succesfully!");
+
+            }
+            else {
+
+                System.out.printf("There has been a problem deleting Application with id: " + appId);
+
+            }
+
+
+        } catch (Exception e) {
+
+            System.out.println(e.getMessage());
+
+        }
+
+    }
+
+    @PutMapping("/update/{appId}")
+    public void updateApplication(@PathVariable("appId") Long appId, @RequestBody ApplicationDTO appDto) {
+
+        try {
+
+            if(appId > 0) {
+
+                appService.updateApp(appId, appDto);
 
             }
             else {

@@ -35,9 +35,9 @@ public class Academic_personel extends Person{
 	@ManyToMany(mappedBy = "reviewers")
 	private Collection<Thesis> ThesisForReview = new ArrayList<>();
 
-	@ManyToMany(mappedBy = "recipients")
-	@JsonBackReference
-	private Collection<Application> applications = new ArrayList<>();
+//	@ManyToMany(mappedBy = "recipients")
+//	@JsonBackReference
+//	private Collection<Application> applications = new ArrayList<>();
 
 	@OneToMany(mappedBy = "personel")
 	private Collection<Comments> comments;
