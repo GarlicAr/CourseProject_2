@@ -18,6 +18,19 @@ const ApplicationList = () => {
         fetchData();
     }, []);
 
+    const onDelete = async (appId) => {
+        try {
+
+            await axios.post('http://localhost:8080/applications/delete/' + appId)
+
+        }
+        catch (error) {
+            console.error(error);
+        }
+
+
+    }
+
 
     return (
         <div>
@@ -42,6 +55,7 @@ const ApplicationList = () => {
                                     ? app.recipients.map((recipient) => recipient.personId).join(', ')
                                     : 'N/A'}
                             </td>
+                            <td onClick={() => onDelete(app.applicationId)}>DELETE</td>
                         </tr>
                     ))}
                 </tbody>

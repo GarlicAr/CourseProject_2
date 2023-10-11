@@ -8,4 +8,6 @@ public interface IApplicationCRUDService {
 
     public List<Application> getAll();
 
+    public void deleteApplication(Long appId);
+
 }

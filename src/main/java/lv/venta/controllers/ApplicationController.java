@@ -8,9 +8,7 @@ import lv.venta.services.IApplicationCRUDService;
 import lv.venta.services.impl.ApplicationCRUDService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
@@ -44,7 +42,34 @@ public class ApplicationController {
         }
 
 
+    }
+
+    @PostMapping("/delete/{appId}")
+    public void deleteApplication(@PathVariable("appId") Long appId) {
+
+        try {
+
+            if(appId > 0) {
+
+                appService.deleteApplication(appId);
+
+                System.out.printf("Application: " + appId + " has been deleted succesfully!");
+
+            }
+            else {
+
+                System.out.printf("There has been a problem deleting Application with id: " + appId);
+
+            }
+
+
+        } catch (Exception e) {
+
+            System.out.println(e.getMessage());
+
+        }
 
     }
+
 
 }
